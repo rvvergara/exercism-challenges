@@ -8,6 +8,7 @@ class HelloWorld {
     //
     // YOUR CODE GOES HERE
     //
+    return "Hello, World!";
   }
 }
 
