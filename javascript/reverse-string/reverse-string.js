@@ -1,4 +1,4 @@
-function reverseString(s) {
+export function reverseString(s) {
   let newString = "";
   for (let i = s.length - 1; i > -1; i--) {
     newString += s[i];
@@ -6,4 +6,5 @@ function reverseString(s) {
   return newString;
 }
 
-export default reverseString;
+// ES6 refactor
+export const reverseString2 = s => s.split("").reverse().join("");
