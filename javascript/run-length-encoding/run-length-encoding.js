@@ -17,4 +17,19 @@ export function encode(str) {
   }
   return encodeStr;
 }
-export function decode(str) {}
+export function decode(str) {
+  let numbers = "";
+  let decodeSTR = "";
+  for (let i = 0; i < str.length; i++) {
+    if (/^\d+$/.test(str[i])) {
+      numbers += str[i];
+    } else {
+      let num = numbers === "" ? 1 : parseInt(numbers);
+      for (let j = 0; j < num; j++) {
+        decodeSTR += str[i];
+      }
+      numbers = "";
+    }
+  }
+  return decodeSTR;
+}
