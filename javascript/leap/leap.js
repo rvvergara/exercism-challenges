@@ -14,9 +14,5 @@ function isLeap(year) {
     }
 }
 
-<<<<<<< HEAD
 export default isLeap;
 // This problem is solved
-=======
-export default isLeap;
->>>>>>> 493265663f747641b23bea2e310df3e77a017959
