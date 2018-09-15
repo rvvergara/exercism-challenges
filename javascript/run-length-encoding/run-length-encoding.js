@@ -1,4 +1,4 @@
-export function encode(str) {
+export function encode_recursive(str) {
   let key = str[0],
     count = 0,
     output = "";
@@ -14,7 +14,7 @@ export function encode(str) {
   }
 }
 
-export function decode(str) {
+export function decode_recursive(str) {
   let numStr = "",
     output = "";
   if (str.length === 0) return "";
