@@ -37,33 +37,28 @@ export function decode(str) {
 // Recursive versions
 
 export function encode_recursive(str) {
-  let key = str[0],
-    count = 0,
+  let count = arguments[1] === undefined ? 1 : arguments[1],
     output = "";
-  if (str.length === 0) return "";
-  for (let i = 0; i < str.length + 1; i++) {
-    if (str[i] === key) count++;
-    else {
-      // it should stop counting and result in the key printed by count times
-      count === 1 ? (output += key) : (output = output + count + key);
-      let next = encode(str.substr(i)); //recursively call encode on the next substring after first consecutive pattern
-      return next === undefined ? output : output + next;
-    }
+  if (str === "") return "";
+  if (str[1] === str[0]) count++;
+  else {
+    count === 1 ? (output += str[0]) : (output += count + str[0]);
+    count = 1;
   }
+  return output + encode(str.substr(1), count);
 }
 
 export function decode_recursive(str) {
-  let numStr = "",
+  let numStr = arguments[1] === undefined ? "" : arguments[1],
     output = "";
-  if (str.length === 0) return "";
-  for (let i = 0; i < str.length; i++) {
-    if (str[i].match(/\d/g)) numStr += str[i];
-    else {
-      numStr === "" ? (numStr += "1") : undefined;
-      let times = Number(numStr);
-      for (let j = 0; j < times; j++) output += str[i];
-      let next = decode(str.substr(i + 1));
-      return next === undefined ? output : output + next;
-    }
+  if (str === "") return "";
+  if (str[0].match(/\d/)) numStr += str[0];
+  else {
+    if (numStr === "") numStr = "1";
+    for (let i = 0; i < Number(numStr); i++) output += str[0];
+    numStr = "";
   }
+  return str.substr(1) !== undefined
+    ? output + decode(str.substr(1), numStr)
+    : output;
 }
