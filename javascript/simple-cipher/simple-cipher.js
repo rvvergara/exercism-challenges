@@ -1,7 +1,8 @@
 // Helper functions
 function generateKey(str) {
-  let text = "";
-  for (let i = 0; i < 100; i++) {
+  let text = "",
+    keysize;
+  for (let i = 0; i < keysize; i++) {
     text += str.charAt(Math.floor(Math.random() * str.length));
   }
   return text;
