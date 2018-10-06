@@ -1,18 +1,1 @@
-function isLeap(year) {
-    if (year % 4 === 0) {
-        if (year % 100 !== 0) {
-            return true;
-        } else {
-            if (year % 400 === 0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    } else {
-        return false;
-    }
-}
-
-export default isLeap;
-// This problem is solved
+export let isLeap = year => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
