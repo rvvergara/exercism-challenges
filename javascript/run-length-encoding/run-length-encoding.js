@@ -36,8 +36,8 @@ export function decode(str) {
 
 // Recursive versions
 
-export function encode_recursive(str) {
-  let count = arguments[1] === undefined ? 1 : arguments[1],
+export function encode_recursive(str, arg1 = 1) {
+  let count = arg1,
     output = "";
   if (str === "") return "";
   if (str[1] === str[0]) count++;
@@ -48,8 +48,8 @@ export function encode_recursive(str) {
   return output + encode(str.substr(1), count);
 }
 
-export function decode_recursive(str) {
-  let numStr = arguments[1] === undefined ? "" : arguments[1],
+export function decode_recursive(str, arg1 = "") {
+  let numStr = arg1,
     output = "";
   if (str === "") return "";
   if (str[0].match(/\d/)) numStr += str[0];
